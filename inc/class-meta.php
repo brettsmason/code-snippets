@@ -1,5 +1,5 @@
 <?php
-class Building_Block_Code_Meta_Box {
+class Building_Block_Meta_Box {
 
 	public function __construct() {
 
@@ -101,10 +101,10 @@ class Building_Block_Code_Meta_Box {
 			return;
 
 		// Sanitize user input.
-		$bb_new_html  = isset( $_POST[ 'bb_html' ] )  ? wp_kses_post( $_POST[ 'bb_html' ] ) : '';
-		$bb_new_css   = isset( $_POST[ 'bb_css' ] )   ? wp_strip_all_tags( $_POST[ 'bb_css' ] )  : '';
-		$bb_new_scss  = isset( $_POST[ 'bb_scss' ] )  ? wp_strip_all_tags( $_POST[ 'bb_scss' ] )  : '';
-		$bb_new_js    = isset( $_POST[ 'bb_js' ] )    ? esc_js( $_POST[ 'bb_js' ] )   : '';
+		$bb_new_html  = isset( $_POST[ 'bb_html' ] )  ? $_POST[ 'bb_html' ] : '';
+		$bb_new_css   = isset( $_POST[ 'bb_css' ] )   ? $_POST[ 'bb_css' ] : '';
+		$bb_new_scss  = isset( $_POST[ 'bb_scss' ] )  ? $_POST[ 'bb_scss' ] : '';
+		$bb_new_js    = isset( $_POST[ 'bb_js' ] )    ? $_POST[ 'bb_js' ] : '';
 
 		// Update the meta field in the database.
 		update_post_meta( $post_id, 'bb_html', $bb_new_html );
@@ -115,4 +115,4 @@ class Building_Block_Code_Meta_Box {
 	}
 }
 
-new Building_Block_Code_Meta_Box;
+new Building_Block_Meta_Box;

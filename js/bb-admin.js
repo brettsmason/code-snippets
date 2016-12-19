@@ -1,14 +1,3 @@
-/**
- * JS SCRIPT
-**/
-;( function( $ ) {
-
-
-})( jQuery );
-
-jQuery( document ).ready( function( $ ) {	
-});
-
 var htmlEditor = ace.edit("bb_code_html");
 htmlEditor.setTheme("ace/theme/twilight");
 htmlEditor.getSession().setMode("ace/mode/html");
@@ -20,7 +9,6 @@ htmlEditor.getSession().on('change', function(e) {
 
 	input.value = editorContent;
 });
-
 
 
 var cssEditor = ace.edit("bb_code_css");
