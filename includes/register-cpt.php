@@ -124,19 +124,3 @@ function bb_code_tag_taxonomy() {
 
 }
 add_action( 'init', 'bb_code_tag_taxonomy', 0 );
-
-// Registers scripts
-function bb_code_admin_scripts( $hook_suffix ) {
-
-	/* Register */
-	wp_register_style( 'bb-style-admin', BUILDING_BLOCKS_URI . 'assets/style.css', array(), BUILDING_BLOCKS_VERSION );
-	wp_register_script( 'bb-script-admin', BUILDING_BLOCKS_URI . 'assets/script.js', array( 'jquery' ), BUILDING_BLOCKS_VERSION, true );
-
-	wp_register_script( 'ace', BUILDING_BLOCKS_URI . 'assets/src-noconflict/ace.js', array(), BUILDING_BLOCKS_VERSION, true );
-
-	wp_enqueue_style( 'bb-style-admin' );
-	wp_enqueue_script( 'ace' );
-	wp_enqueue_script( 'bb-script-admin' );
-
-}
-add_action( 'admin_enqueue_scripts', 'bb_code_admin_scripts' );

@@ -45,6 +45,10 @@ function building_blocks_init() {
 
 	/* Metaboxes */
 	require_once( BUILDING_BLOCKS_PATH . 'includes/metaboxes.php' );
+
+	require_once( BUILDING_BLOCKS_PATH . 'includes/scripts.php' );
+
+	require_once( BUILDING_BLOCKS_PATH . 'includes/oembed.php' );
 }
 
 

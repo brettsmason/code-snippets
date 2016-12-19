@@ -1,5 +1,5 @@
 <?php
-class Building_Block_Meta_Box {
+class Building_Block_Code_Meta_Box {
 
 	public function __construct() {
 
@@ -115,4 +115,4 @@ class Building_Block_Meta_Box {
 	}
 }
 
-new Building_Block_Meta_Box;
+new Building_Block_Code_Meta_Box;
