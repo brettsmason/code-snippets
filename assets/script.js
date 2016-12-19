@@ -35,6 +35,20 @@ cssEditor.getSession().on('change', function(e) {
 	input.value = editorContent;
 });
 
+
+var scssEditor = ace.edit("bb_code_scss");
+scssEditor.setTheme("ace/theme/twilight");
+scssEditor.getSession().setMode("ace/mode/scss");
+document.getElementById('bb_code_scss').style.fontSize='16px';
+
+scssEditor.getSession().on('change', function(e) {
+	var editorContent = scssEditor.getValue();
+	var input = document.getElementById('bb_scss');
+
+	input.value = editorContent;
+});
+
+
 var jsEditor = ace.edit("bb_code_js");
 jsEditor.setTheme("ace/theme/twilight");
 jsEditor.getSession().setMode("ace/mode/javascript");

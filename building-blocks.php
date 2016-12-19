@@ -37,15 +37,14 @@ add_action( 'plugins_loaded', 'building_blocks_init' );
  */
 function building_blocks_init() {
 
-	/* Var */
-	$uri      = BUILDING_BLOCKS_URI;
-	$path     = BUILDING_BLOCKS_PATH;
-	$file     = BUILDING_BLOCKS_FILE;
-	$plugin   = BUILDING_BLOCKS_PLUGIN;
-	$version  = BUILDING_BLOCKS_VERSION;
+	/* Load Files
+	------------------------------------------ */
 
-	/* Setup */
-	require_once( $path . 'includes/setup.php' );
+	/* Post Type & Taxonomy */
+	require_once( BUILDING_BLOCKS_PATH . 'includes/register-cpt.php' );
+
+	/* Metaboxes */
+	require_once( BUILDING_BLOCKS_PATH . 'includes/metaboxes.php' );
 }
 
 
