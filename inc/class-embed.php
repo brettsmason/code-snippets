@@ -30,7 +30,7 @@ class Building_Block_Embed {
 		$post = get_post( $id );
 
 		if ( is_embed() && 'building_block' === $post->post_type ) {
-		  return '';
+		  // return '';
 		}
 
 		return $title;
@@ -41,7 +41,7 @@ class Building_Block_Embed {
 		  return;
 		}
 
-		$output = get_post_meta( get_the_ID(), 'bb_html', true );
+		$output = '<div class="wp-embed-content">' . get_post_meta( get_the_ID(), 'bb_html', true ) . '</div>';
 
 		echo $output;
 	}
