@@ -101,9 +101,9 @@ class Building_Block_Meta_Box {
 			return;
 
 		// Sanitize user input.
-		$bb_new_html  = isset( $_POST[ 'bb_html' ] )  ? esc_attr( $_POST[ 'bb_html' ] ) : '';
-		$bb_new_css   = isset( $_POST[ 'bb_css' ] )   ? esc_attr( $_POST[ 'bb_css' ] )  : '';
-		$bb_new_scss  = isset( $_POST[ 'bb_scss' ] )  ? esc_attr( $_POST[ 'bb_scss' ] )  : '';
+		$bb_new_html  = isset( $_POST[ 'bb_html' ] )  ? wp_kses_post( $_POST[ 'bb_html' ] ) : '';
+		$bb_new_css   = isset( $_POST[ 'bb_css' ] )   ? wp_strip_all_tags( $_POST[ 'bb_css' ] )  : '';
+		$bb_new_scss  = isset( $_POST[ 'bb_scss' ] )  ? wp_strip_all_tags( $_POST[ 'bb_scss' ] )  : '';
 		$bb_new_js    = isset( $_POST[ 'bb_js' ] )    ? esc_js( $_POST[ 'bb_js' ] )   : '';
 
 		// Update the meta field in the database.
