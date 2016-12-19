@@ -37,6 +37,8 @@ function embed_styles() {
       return;
     }
 
+	wp_enqueue_style( 'bb-code-embed-styles', BUILDING_BLOCKS_URI . 'assets/wp-embed-template.css', array(), '6.3.0' );
+
     $css = get_post_meta( get_the_ID(), 'bb_css', true );
 	echo '<style>' . $css . '</style>';
 
@@ -63,3 +65,7 @@ function embed_scripts() {
 	echo '<script>' . $js . '</script>';
 }
 add_action( 'embed_footer', 'embed_scripts' );
+
+
+// Remove default embed styles
+remove_action( 'embed_head', 'print_embed_styles' );

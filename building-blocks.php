@@ -49,6 +49,8 @@ function building_blocks_init() {
 	require_once( BUILDING_BLOCKS_PATH . 'includes/scripts.php' );
 
 	require_once( BUILDING_BLOCKS_PATH . 'includes/oembed.php' );
+
+	require_once( BUILDING_BLOCKS_PATH . 'includes/functions.php' );
 }
 
 
