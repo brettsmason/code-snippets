@@ -10,12 +10,19 @@ add_action( 'admin_enqueue_scripts', 'building_blocks_admin_register_scripts', 0
  * @access public
  * @return void
  */
-function building_blocks_admin_register_styles() {
+function building_blocks_admin_register_styles( $hook_suffix ) {
+	global $post_type, $taxonomy;
+
 	$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 	wp_register_style( 'bb-style-admin', building_blocks_plugin()->css_uri . 'bb-admin.css' );
 
-	wp_enqueue_style( 'bb-style-admin' );
+	if( 'building_block' == $post_type ) {
+		/* Add/Edit Screen */
+		if( in_array( $hook_suffix, array( 'post-new.php', 'post.php' ) ) ) {
+			wp_enqueue_style( 'bb-style-admin' );
+		}
+	}
 }
 
 /**
@@ -25,12 +32,19 @@ function building_blocks_admin_register_styles() {
  * @access public
  * @return void
  */
-function building_blocks_admin_register_scripts() {
+function building_blocks_admin_register_scripts( $hook_suffix ) {
+	global $post_type, $taxonomy;
+
 	$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 	wp_register_script( 'bb-script-admin', building_blocks_plugin()->js_uri . 'bb-admin.js', array( 'jquery' ), '', true );
 	wp_register_script( 'ace', building_blocks_plugin()->js_uri . 'src-noconflict/ace.js', array(), '', true );
 
-	wp_enqueue_script( 'ace' );
-	wp_enqueue_script( 'bb-script-admin' );
+	if( 'building_block' == $post_type ) {
+		/* Add/Edit Screen */
+		if( in_array( $hook_suffix, array( 'post-new.php', 'post.php' ) ) ){
+			wp_enqueue_script( 'ace' );
+			wp_enqueue_script( 'bb-script-admin' );
+		}
+	}
 }
