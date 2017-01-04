@@ -1,5 +1,5 @@
 <?php
-class Building_Block_Embed {
+class Code_Snippets_Embed {
 
 	public function __construct() {
 
@@ -18,10 +18,10 @@ class Building_Block_Embed {
 		// Enqueue custom scripts for embed
 		add_action( 'enqueue_embed_scripts', array( $this, 'enqueue_scripts' ) );
 
-		// Building block post meta CSS
+		// Code Snippet post meta CSS
 		add_action( 'embed_head', array( $this, 'head_styles' ) );
 
-		// Building block post meta JavaScript
+		// Code Snippet post meta JavaScript
 		add_action( 'embed_footer', array( $this, 'footer_scripts' ) );
 
 	}
@@ -29,7 +29,7 @@ class Building_Block_Embed {
 	public function title( $title, $id ) {
 		$post = get_post( $id );
 
-		if ( is_embed() && 'building_block' === $post->post_type ) {
+		if ( is_embed() && 'code_snippet' === $post->post_type ) {
 		  // return '';
 		}
 
@@ -37,11 +37,11 @@ class Building_Block_Embed {
 	}
 
 	public function embed_code() {
-		if ( 'building_block' !== get_post_type() ) {
+		if ( 'code_snippet' !== get_post_type() ) {
 		  return;
 		}
 
-		$output = '<div class="wp-embed-content">' . get_post_meta( get_the_ID(), 'bb_html', true ) . '</div>';
+		$output = '<div class="wp-embed-content">' . get_post_meta( get_the_ID(), 'cs_html', true ) . '</div>';
 
 		echo $output;
 	}
@@ -50,12 +50,12 @@ class Building_Block_Embed {
 	 * Add the plugin's custom embed styles
 	 */
 	function enqueue_styles() {
-		if ( 'building_block' !== get_post_type() ) {
+		if ( 'code_snippet' !== get_post_type() ) {
 	      return;
 		}
 
-		wp_enqueue_style( 'bb-embed-styles', building_blocks_plugin()->dir_uri . 'css/wp-embed-template.css', array(), '6.3.0' );
-		wp_enqueue_style( 'foundation-css', building_blocks_plugin()->dir_uri . 'css/foundation.min.css', array(), '6.3.0' );
+		wp_enqueue_style( 'code-snippets-embed-styles', code_snippets_plugin()->dir_uri . 'css/wp-embed-template.css', array(), '6.3.0' );
+		wp_enqueue_style( 'foundation-css', code_snippets_plugin()->dir_uri . 'css/foundation.min.css', array(), '6.3.0' );
 	}
 
 
@@ -63,23 +63,23 @@ class Building_Block_Embed {
 	 * Add the plugin's custom embed scripts
 	 */
 	function enqueue_scripts() {
-		if ( 'building_block' !== get_post_type() ) {
+		if ( 'code_snippet' !== get_post_type() ) {
 	      return;
 		}
 
-		wp_enqueue_script( 'foundation-js', building_blocks_plugin()->dir_uri . 'js/foundation.min.js', array('jquery'), '6.3.0', true );
-		wp_enqueue_script( 'foundation-init', building_blocks_plugin()->dir_uri . 'js/foundation-init.js', array('foundation-js'), '6.3.0', true );
+		wp_enqueue_script( 'foundation-js', code_snippets_plugin()->dir_uri . 'js/foundation.min.js', array('jquery'), '6.3.0', true );
+		wp_enqueue_script( 'foundation-init', code_snippets_plugin()->dir_uri . 'js/foundation-init.js', array('foundation-js'), '6.3.0', true );
 	}
 
 	/**
 	 * Add the building blocks custom styles to the embed
 	 */
 	function head_styles() {
-		if ( 'building_block' !== get_post_type() ) {
+		if ( 'code_snippet' !== get_post_type() ) {
 	      return;
 		}
 
-		$css = get_post_meta( get_the_ID(), 'bb_css', true );
+		$css = get_post_meta( get_the_ID(), 'cs_css', true );
 		echo '<style>' . $css . '</style>';
 	}
 
@@ -87,13 +87,13 @@ class Building_Block_Embed {
 	 * Add the building blocks custom styles to the embed
 	 */
 	function footer_scripts() {
-		if ( 'building_block' !== get_post_type() ) {
+		if ( 'code_snippet' !== get_post_type() ) {
 	      return;
 		}
 
-		$js = get_post_meta( get_the_ID(), 'bb_js', true );
+		$js = get_post_meta( get_the_ID(), 'cs_js', true );
 		echo '<script>' . $js . '</script>';
 	}
 }
 
-new Building_Block_Embed;
+new Code_Snippets_Embed;

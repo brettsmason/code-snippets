@@ -1,0 +1,15 @@
+.no-js .cs-code-editor {
+	display: none;
+}
+
+.cs-code-editor {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	min-height: 350px;
+}
+
+.cs-code-hidden {
+	display: none;
+}

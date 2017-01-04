@@ -1,14 +1,14 @@
 <?php
 /*
- * Plugin Name: Building Blocks
+ * Plugin Name: Code Snippets
  * Plugin URI: http://www.brettmason.co.uk
- * Description: Add a CodePen style building blocks library.
+ * Description: Add a CodePen style code snippets library.
  * Version: 1.0.0
  * Author: Brett Mason
  * Author URI: http://www.brettmason.co.uk
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: building-blocks
+ * Text Domain: code-snippets
  * Domain Path: /languages/
  *
  */
@@ -19,7 +19,7 @@
  * @since  1.0.0
  * @access public
  */
-final class Building_Blocks_Plugin {
+final class Code_Snippets_Plugin {
 	/**
 	 * Plugin directory path.
 	 *
@@ -86,7 +86,7 @@ final class Building_Blocks_Plugin {
 	public static function get_instance() {
 		static $instance = null;
 		if ( is_null( $instance ) ) {
-			$instance = new Building_Blocks_Plugin;
+			$instance = new Code_Snippets_Plugin;
 			$instance->setup();
 			$instance->includes();
 			$instance->setup_actions();
@@ -109,7 +109,7 @@ final class Building_Blocks_Plugin {
 	 * @return void
 	 */
 	public function __toString() {
-		return 'building-blocks';
+		return 'code-snippets';
 	}
 	/**
 	 * Magic method to keep the object from being cloned.
@@ -119,7 +119,7 @@ final class Building_Blocks_Plugin {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Whoah, partner!', 'building-blocks' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Whoah, partner!', 'code-snippets' ), '1.0.0' );
 	}
 	/**
 	 * Magic method to keep the object from being unserialized.
@@ -129,7 +129,7 @@ final class Building_Blocks_Plugin {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Whoah, partner!', 'building-blocks' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Whoah, partner!', 'code-snippets' ), '1.0.0' );
 	}
 	/**
 	 * Magic method to prevent a fatal error when calling a method that doesn't exist.
@@ -139,7 +139,7 @@ final class Building_Blocks_Plugin {
 	 * @return null
 	 */
 	public function __call( $method = '', $args = array() ) {
-		_doing_it_wrong( "Building_Blocks_Plugin::{$method}", esc_html__( 'Method does not exist.', 'building-blocks' ), '1.0.0' );
+		_doing_it_wrong( "Code_Snippets_Plugin::{$method}", esc_html__( 'Method does not exist.', 'code-snippets' ), '1.0.0' );
 		unset( $method, $args );
 		return null;
 	}
@@ -172,8 +172,10 @@ final class Building_Blocks_Plugin {
 	private function includes() {
 
 		// Load functions files.
-		require_once( $this->dir_path . 'inc/class-embed.php'      );
-		require_once( $this->dir_path . 'inc/class-meta.php'       );
+		require_once( $this->dir_path . 'inc/class-embed.php' );
+		require_once( $this->dir_path . 'inc/class-metabox-code.php' );
+		require_once( $this->dir_path . 'inc/class-metabox-css-libraries.php' );
+		require_once( $this->dir_path . 'inc/class-metabox-js-libraries.php' );
 		require_once( $this->dir_path . 'inc/functions-post-types.php' );
 		require_once( $this->dir_path . 'inc/functions-taxonomies.php' );
 		require_once( $this->dir_path . 'inc/functions-template.php' );
@@ -204,19 +206,19 @@ final class Building_Blocks_Plugin {
 	 * @return void
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'building-blocks', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'languages' );
+		load_plugin_textdomain( 'code-snippets', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ). 'languages' );
 	}
 }
 /**
- * Gets the instance of the `Building_Blocks_Plugin` class.  This function is useful for quickly grabbing data
+ * Gets the instance of the `Code_Snippets_Plugin` class.  This function is useful for quickly grabbing data
  * used throughout the plugin.
  *
  * @since  1.0.0
  * @access public
  * @return object
  */
-function building_blocks_plugin() {
-	return Building_Blocks_Plugin::get_instance();
+function Code_Snippets_plugin() {
+	return Code_Snippets_Plugin::get_instance();
 }
 // Let's roll!
-building_blocks_plugin();
+Code_Snippets_plugin();
